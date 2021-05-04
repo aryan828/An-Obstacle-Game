@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/aryan/CLionProjects/TheOPGame/game.cpp
+game.h
+/home/aryan/CLionProjects/TheOPGame/game.h
+
+/home/aryan/CLionProjects/TheOPGame/game.h
+curses.h
+-
+screen.h
+/home/aryan/CLionProjects/TheOPGame/screen.h
+
+/home/aryan/CLionProjects/TheOPGame/main.cpp
+game.h
+/home/aryan/CLionProjects/TheOPGame/game.h
+
+/home/aryan/CLionProjects/TheOPGame/screen.cpp
+screen.h
+/home/aryan/CLionProjects/TheOPGame/screen.h
+
+/home/aryan/CLionProjects/TheOPGame/screen.h
+curses.h
+-
+

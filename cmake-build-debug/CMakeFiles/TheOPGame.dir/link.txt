@@ -1,0 +1,1 @@
+/usr/bin/c++ -lncurses -g CMakeFiles/TheOPGame.dir/main.cpp.o CMakeFiles/TheOPGame.dir/game.cpp.o CMakeFiles/TheOPGame.dir/screen.cpp.o CMakeFiles/TheOPGame.dir/player_controller.cpp.o CMakeFiles/TheOPGame.dir/obstacle.cpp.o CMakeFiles/TheOPGame.dir/collectible.cpp.o -o TheOPGame 
