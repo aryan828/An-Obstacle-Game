@@ -1,10 +1,11 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/TheOPGame.dir/collectible.cpp.o"
-  "CMakeFiles/TheOPGame.dir/game.cpp.o"
-  "CMakeFiles/TheOPGame.dir/main.cpp.o"
-  "CMakeFiles/TheOPGame.dir/obstacle.cpp.o"
-  "CMakeFiles/TheOPGame.dir/player_controller.cpp.o"
-  "CMakeFiles/TheOPGame.dir/screen.cpp.o"
+  "CMakeFiles/TheOPGame.dir/src/board_generator.cpp.o"
+  "CMakeFiles/TheOPGame.dir/src/collectible.cpp.o"
+  "CMakeFiles/TheOPGame.dir/src/game.cpp.o"
+  "CMakeFiles/TheOPGame.dir/src/main.cpp.o"
+  "CMakeFiles/TheOPGame.dir/src/obstacle.cpp.o"
+  "CMakeFiles/TheOPGame.dir/src/player_controller.cpp.o"
+  "CMakeFiles/TheOPGame.dir/src/screen.cpp.o"
   "TheOPGame"
   "TheOPGame.pdb"
 )

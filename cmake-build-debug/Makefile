@@ -142,167 +142,194 @@ TheOPGame/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/build
 .PHONY : TheOPGame/fast
 
-collectible.o: collectible.cpp.o
+src/board_generator.o: src/board_generator.cpp.o
 
-.PHONY : collectible.o
-
-# target to build an object file
-collectible.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/collectible.cpp.o
-.PHONY : collectible.cpp.o
-
-collectible.i: collectible.cpp.i
-
-.PHONY : collectible.i
-
-# target to preprocess a source file
-collectible.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/collectible.cpp.i
-.PHONY : collectible.cpp.i
-
-collectible.s: collectible.cpp.s
-
-.PHONY : collectible.s
-
-# target to generate assembly for a file
-collectible.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/collectible.cpp.s
-.PHONY : collectible.cpp.s
-
-game.o: game.cpp.o
-
-.PHONY : game.o
+.PHONY : src/board_generator.o
 
 # target to build an object file
-game.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/game.cpp.o
-.PHONY : game.cpp.o
+src/board_generator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/board_generator.cpp.o
+.PHONY : src/board_generator.cpp.o
 
-game.i: game.cpp.i
+src/board_generator.i: src/board_generator.cpp.i
 
-.PHONY : game.i
+.PHONY : src/board_generator.i
 
 # target to preprocess a source file
-game.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/game.cpp.i
-.PHONY : game.cpp.i
+src/board_generator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/board_generator.cpp.i
+.PHONY : src/board_generator.cpp.i
 
-game.s: game.cpp.s
+src/board_generator.s: src/board_generator.cpp.s
 
-.PHONY : game.s
+.PHONY : src/board_generator.s
 
 # target to generate assembly for a file
-game.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/game.cpp.s
-.PHONY : game.cpp.s
+src/board_generator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/board_generator.cpp.s
+.PHONY : src/board_generator.cpp.s
 
-main.o: main.cpp.o
+src/collectible.o: src/collectible.cpp.o
 
-.PHONY : main.o
+.PHONY : src/collectible.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/collectible.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/collectible.cpp.o
+.PHONY : src/collectible.cpp.o
 
-main.i: main.cpp.i
+src/collectible.i: src/collectible.cpp.i
 
-.PHONY : main.i
+.PHONY : src/collectible.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/collectible.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/collectible.cpp.i
+.PHONY : src/collectible.cpp.i
 
-main.s: main.cpp.s
+src/collectible.s: src/collectible.cpp.s
 
-.PHONY : main.s
+.PHONY : src/collectible.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/collectible.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/collectible.cpp.s
+.PHONY : src/collectible.cpp.s
 
-obstacle.o: obstacle.cpp.o
+src/game.o: src/game.cpp.o
 
-.PHONY : obstacle.o
+.PHONY : src/game.o
 
 # target to build an object file
-obstacle.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/obstacle.cpp.o
-.PHONY : obstacle.cpp.o
+src/game.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/game.cpp.o
+.PHONY : src/game.cpp.o
 
-obstacle.i: obstacle.cpp.i
+src/game.i: src/game.cpp.i
 
-.PHONY : obstacle.i
+.PHONY : src/game.i
 
 # target to preprocess a source file
-obstacle.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/obstacle.cpp.i
-.PHONY : obstacle.cpp.i
+src/game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/game.cpp.i
+.PHONY : src/game.cpp.i
 
-obstacle.s: obstacle.cpp.s
+src/game.s: src/game.cpp.s
 
-.PHONY : obstacle.s
+.PHONY : src/game.s
 
 # target to generate assembly for a file
-obstacle.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/obstacle.cpp.s
-.PHONY : obstacle.cpp.s
+src/game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/game.cpp.s
+.PHONY : src/game.cpp.s
 
-player_controller.o: player_controller.cpp.o
+src/main.o: src/main.cpp.o
 
-.PHONY : player_controller.o
+.PHONY : src/main.o
 
 # target to build an object file
-player_controller.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/player_controller.cpp.o
-.PHONY : player_controller.cpp.o
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
 
-player_controller.i: player_controller.cpp.i
+src/main.i: src/main.cpp.i
 
-.PHONY : player_controller.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-player_controller.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/player_controller.cpp.i
-.PHONY : player_controller.cpp.i
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-player_controller.s: player_controller.cpp.s
+src/main.s: src/main.cpp.s
 
-.PHONY : player_controller.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-player_controller.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/player_controller.cpp.s
-.PHONY : player_controller.cpp.s
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
-screen.o: screen.cpp.o
+src/obstacle.o: src/obstacle.cpp.o
 
-.PHONY : screen.o
+.PHONY : src/obstacle.o
 
 # target to build an object file
-screen.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/screen.cpp.o
-.PHONY : screen.cpp.o
+src/obstacle.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/obstacle.cpp.o
+.PHONY : src/obstacle.cpp.o
 
-screen.i: screen.cpp.i
+src/obstacle.i: src/obstacle.cpp.i
 
-.PHONY : screen.i
+.PHONY : src/obstacle.i
 
 # target to preprocess a source file
-screen.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/screen.cpp.i
-.PHONY : screen.cpp.i
+src/obstacle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/obstacle.cpp.i
+.PHONY : src/obstacle.cpp.i
 
-screen.s: screen.cpp.s
+src/obstacle.s: src/obstacle.cpp.s
 
-.PHONY : screen.s
+.PHONY : src/obstacle.s
 
 # target to generate assembly for a file
-screen.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/screen.cpp.s
-.PHONY : screen.cpp.s
+src/obstacle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/obstacle.cpp.s
+.PHONY : src/obstacle.cpp.s
+
+src/player_controller.o: src/player_controller.cpp.o
+
+.PHONY : src/player_controller.o
+
+# target to build an object file
+src/player_controller.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/player_controller.cpp.o
+.PHONY : src/player_controller.cpp.o
+
+src/player_controller.i: src/player_controller.cpp.i
+
+.PHONY : src/player_controller.i
+
+# target to preprocess a source file
+src/player_controller.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/player_controller.cpp.i
+.PHONY : src/player_controller.cpp.i
+
+src/player_controller.s: src/player_controller.cpp.s
+
+.PHONY : src/player_controller.s
+
+# target to generate assembly for a file
+src/player_controller.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/player_controller.cpp.s
+.PHONY : src/player_controller.cpp.s
+
+src/screen.o: src/screen.cpp.o
+
+.PHONY : src/screen.o
+
+# target to build an object file
+src/screen.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/screen.cpp.o
+.PHONY : src/screen.cpp.o
+
+src/screen.i: src/screen.cpp.i
+
+.PHONY : src/screen.i
+
+# target to preprocess a source file
+src/screen.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/screen.cpp.i
+.PHONY : src/screen.cpp.i
+
+src/screen.s: src/screen.cpp.s
+
+.PHONY : src/screen.s
+
+# target to generate assembly for a file
+src/screen.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/screen.cpp.s
+.PHONY : src/screen.cpp.s
 
 # Help Target
 help:
@@ -313,24 +340,27 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... TheOPGame"
-	@echo "... collectible.o"
-	@echo "... collectible.i"
-	@echo "... collectible.s"
-	@echo "... game.o"
-	@echo "... game.i"
-	@echo "... game.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
-	@echo "... obstacle.o"
-	@echo "... obstacle.i"
-	@echo "... obstacle.s"
-	@echo "... player_controller.o"
-	@echo "... player_controller.i"
-	@echo "... player_controller.s"
-	@echo "... screen.o"
-	@echo "... screen.i"
-	@echo "... screen.s"
+	@echo "... src/board_generator.o"
+	@echo "... src/board_generator.i"
+	@echo "... src/board_generator.s"
+	@echo "... src/collectible.o"
+	@echo "... src/collectible.i"
+	@echo "... src/collectible.s"
+	@echo "... src/game.o"
+	@echo "... src/game.i"
+	@echo "... src/game.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/obstacle.o"
+	@echo "... src/obstacle.i"
+	@echo "... src/obstacle.s"
+	@echo "... src/player_controller.o"
+	@echo "... src/player_controller.i"
+	@echo "... src/player_controller.s"
+	@echo "... src/screen.o"
+	@echo "... src/screen.i"
+	@echo "... src/screen.s"
 .PHONY : help
 
 

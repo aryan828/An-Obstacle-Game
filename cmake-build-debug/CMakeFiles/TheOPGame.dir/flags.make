@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/home/aryan/CLionProjects/TheOPGame/include
 
 CXX_FLAGS = -lncurses -g -std=gnu++2a
 
