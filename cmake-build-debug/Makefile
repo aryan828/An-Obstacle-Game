@@ -58,10 +58,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /app/extra/clion/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/152/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /app/extra/clion/bin/cmake/linux/bin/cmake -E rm -f
+RM = /snap/clion/152/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -78,7 +78,7 @@ CMAKE_BINARY_DIR = /home/aryan/CLionProjects/TheOPGame/cmake-build-debug
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/app/extra/clion/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/152/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -89,7 +89,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/app/extra/clion/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/152/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -142,6 +142,33 @@ TheOPGame/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/build
 .PHONY : TheOPGame/fast
 
+src/FileManager.o: src/FileManager.cpp.o
+
+.PHONY : src/FileManager.o
+
+# target to build an object file
+src/FileManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/FileManager.cpp.o
+.PHONY : src/FileManager.cpp.o
+
+src/FileManager.i: src/FileManager.cpp.i
+
+.PHONY : src/FileManager.i
+
+# target to preprocess a source file
+src/FileManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/FileManager.cpp.i
+.PHONY : src/FileManager.cpp.i
+
+src/FileManager.s: src/FileManager.cpp.s
+
+.PHONY : src/FileManager.s
+
+# target to generate assembly for a file
+src/FileManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/FileManager.cpp.s
+.PHONY : src/FileManager.cpp.s
+
 src/board_generator.o: src/board_generator.cpp.o
 
 .PHONY : src/board_generator.o
@@ -168,33 +195,6 @@ src/board_generator.s: src/board_generator.cpp.s
 src/board_generator.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/board_generator.cpp.s
 .PHONY : src/board_generator.cpp.s
-
-src/collectible.o: src/collectible.cpp.o
-
-.PHONY : src/collectible.o
-
-# target to build an object file
-src/collectible.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/collectible.cpp.o
-.PHONY : src/collectible.cpp.o
-
-src/collectible.i: src/collectible.cpp.i
-
-.PHONY : src/collectible.i
-
-# target to preprocess a source file
-src/collectible.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/collectible.cpp.i
-.PHONY : src/collectible.cpp.i
-
-src/collectible.s: src/collectible.cpp.s
-
-.PHONY : src/collectible.s
-
-# target to generate assembly for a file
-src/collectible.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/collectible.cpp.s
-.PHONY : src/collectible.cpp.s
 
 src/game.o: src/game.cpp.o
 
@@ -277,32 +277,32 @@ src/obstacle.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/obstacle.cpp.s
 .PHONY : src/obstacle.cpp.s
 
-src/player_controller.o: src/player_controller.cpp.o
+src/player.o: src/player.cpp.o
 
-.PHONY : src/player_controller.o
+.PHONY : src/player.o
 
 # target to build an object file
-src/player_controller.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/player_controller.cpp.o
-.PHONY : src/player_controller.cpp.o
+src/player.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/player.cpp.o
+.PHONY : src/player.cpp.o
 
-src/player_controller.i: src/player_controller.cpp.i
+src/player.i: src/player.cpp.i
 
-.PHONY : src/player_controller.i
+.PHONY : src/player.i
 
 # target to preprocess a source file
-src/player_controller.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/player_controller.cpp.i
-.PHONY : src/player_controller.cpp.i
+src/player.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/player.cpp.i
+.PHONY : src/player.cpp.i
 
-src/player_controller.s: src/player_controller.cpp.s
+src/player.s: src/player.cpp.s
 
-.PHONY : src/player_controller.s
+.PHONY : src/player.s
 
 # target to generate assembly for a file
-src/player_controller.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/player_controller.cpp.s
-.PHONY : src/player_controller.cpp.s
+src/player.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/player.cpp.s
+.PHONY : src/player.cpp.s
 
 src/screen.o: src/screen.cpp.o
 
@@ -340,12 +340,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... TheOPGame"
+	@echo "... src/FileManager.o"
+	@echo "... src/FileManager.i"
+	@echo "... src/FileManager.s"
 	@echo "... src/board_generator.o"
 	@echo "... src/board_generator.i"
 	@echo "... src/board_generator.s"
-	@echo "... src/collectible.o"
-	@echo "... src/collectible.i"
-	@echo "... src/collectible.s"
 	@echo "... src/game.o"
 	@echo "... src/game.i"
 	@echo "... src/game.s"
@@ -355,9 +355,9 @@ help:
 	@echo "... src/obstacle.o"
 	@echo "... src/obstacle.i"
 	@echo "... src/obstacle.s"
-	@echo "... src/player_controller.o"
-	@echo "... src/player_controller.i"
-	@echo "... src/player_controller.s"
+	@echo "... src/player.o"
+	@echo "... src/player.i"
+	@echo "... src/player.s"
 	@echo "... src/screen.o"
 	@echo "... src/screen.i"
 	@echo "... src/screen.s"

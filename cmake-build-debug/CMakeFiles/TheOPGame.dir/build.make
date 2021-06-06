@@ -53,10 +53,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /app/extra/clion/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/152/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /app/extra/clion/bin/cmake/linux/bin/cmake -E rm -f
+RM = /snap/clion/152/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -76,9 +76,22 @@ include CMakeFiles/TheOPGame.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/TheOPGame.dir/flags.make
 
+CMakeFiles/TheOPGame.dir/src/FileManager.cpp.o: CMakeFiles/TheOPGame.dir/flags.make
+CMakeFiles/TheOPGame.dir/src/FileManager.cpp.o: ../src/FileManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aryan/CLionProjects/TheOPGame/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/TheOPGame.dir/src/FileManager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TheOPGame.dir/src/FileManager.cpp.o -c /home/aryan/CLionProjects/TheOPGame/src/FileManager.cpp
+
+CMakeFiles/TheOPGame.dir/src/FileManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TheOPGame.dir/src/FileManager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/aryan/CLionProjects/TheOPGame/src/FileManager.cpp > CMakeFiles/TheOPGame.dir/src/FileManager.cpp.i
+
+CMakeFiles/TheOPGame.dir/src/FileManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TheOPGame.dir/src/FileManager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/aryan/CLionProjects/TheOPGame/src/FileManager.cpp -o CMakeFiles/TheOPGame.dir/src/FileManager.cpp.s
+
 CMakeFiles/TheOPGame.dir/src/board_generator.cpp.o: CMakeFiles/TheOPGame.dir/flags.make
 CMakeFiles/TheOPGame.dir/src/board_generator.cpp.o: ../src/board_generator.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aryan/CLionProjects/TheOPGame/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/TheOPGame.dir/src/board_generator.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aryan/CLionProjects/TheOPGame/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/TheOPGame.dir/src/board_generator.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TheOPGame.dir/src/board_generator.cpp.o -c /home/aryan/CLionProjects/TheOPGame/src/board_generator.cpp
 
 CMakeFiles/TheOPGame.dir/src/board_generator.cpp.i: cmake_force
@@ -88,19 +101,6 @@ CMakeFiles/TheOPGame.dir/src/board_generator.cpp.i: cmake_force
 CMakeFiles/TheOPGame.dir/src/board_generator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TheOPGame.dir/src/board_generator.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/aryan/CLionProjects/TheOPGame/src/board_generator.cpp -o CMakeFiles/TheOPGame.dir/src/board_generator.cpp.s
-
-CMakeFiles/TheOPGame.dir/src/collectible.cpp.o: CMakeFiles/TheOPGame.dir/flags.make
-CMakeFiles/TheOPGame.dir/src/collectible.cpp.o: ../src/collectible.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aryan/CLionProjects/TheOPGame/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/TheOPGame.dir/src/collectible.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TheOPGame.dir/src/collectible.cpp.o -c /home/aryan/CLionProjects/TheOPGame/src/collectible.cpp
-
-CMakeFiles/TheOPGame.dir/src/collectible.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TheOPGame.dir/src/collectible.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/aryan/CLionProjects/TheOPGame/src/collectible.cpp > CMakeFiles/TheOPGame.dir/src/collectible.cpp.i
-
-CMakeFiles/TheOPGame.dir/src/collectible.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TheOPGame.dir/src/collectible.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/aryan/CLionProjects/TheOPGame/src/collectible.cpp -o CMakeFiles/TheOPGame.dir/src/collectible.cpp.s
 
 CMakeFiles/TheOPGame.dir/src/game.cpp.o: CMakeFiles/TheOPGame.dir/flags.make
 CMakeFiles/TheOPGame.dir/src/game.cpp.o: ../src/game.cpp
@@ -141,18 +141,18 @@ CMakeFiles/TheOPGame.dir/src/obstacle.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TheOPGame.dir/src/obstacle.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/aryan/CLionProjects/TheOPGame/src/obstacle.cpp -o CMakeFiles/TheOPGame.dir/src/obstacle.cpp.s
 
-CMakeFiles/TheOPGame.dir/src/player_controller.cpp.o: CMakeFiles/TheOPGame.dir/flags.make
-CMakeFiles/TheOPGame.dir/src/player_controller.cpp.o: ../src/player_controller.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aryan/CLionProjects/TheOPGame/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/TheOPGame.dir/src/player_controller.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TheOPGame.dir/src/player_controller.cpp.o -c /home/aryan/CLionProjects/TheOPGame/src/player_controller.cpp
+CMakeFiles/TheOPGame.dir/src/player.cpp.o: CMakeFiles/TheOPGame.dir/flags.make
+CMakeFiles/TheOPGame.dir/src/player.cpp.o: ../src/player.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aryan/CLionProjects/TheOPGame/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/TheOPGame.dir/src/player.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TheOPGame.dir/src/player.cpp.o -c /home/aryan/CLionProjects/TheOPGame/src/player.cpp
 
-CMakeFiles/TheOPGame.dir/src/player_controller.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TheOPGame.dir/src/player_controller.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/aryan/CLionProjects/TheOPGame/src/player_controller.cpp > CMakeFiles/TheOPGame.dir/src/player_controller.cpp.i
+CMakeFiles/TheOPGame.dir/src/player.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TheOPGame.dir/src/player.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/aryan/CLionProjects/TheOPGame/src/player.cpp > CMakeFiles/TheOPGame.dir/src/player.cpp.i
 
-CMakeFiles/TheOPGame.dir/src/player_controller.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TheOPGame.dir/src/player_controller.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/aryan/CLionProjects/TheOPGame/src/player_controller.cpp -o CMakeFiles/TheOPGame.dir/src/player_controller.cpp.s
+CMakeFiles/TheOPGame.dir/src/player.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TheOPGame.dir/src/player.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/aryan/CLionProjects/TheOPGame/src/player.cpp -o CMakeFiles/TheOPGame.dir/src/player.cpp.s
 
 CMakeFiles/TheOPGame.dir/src/screen.cpp.o: CMakeFiles/TheOPGame.dir/flags.make
 CMakeFiles/TheOPGame.dir/src/screen.cpp.o: ../src/screen.cpp
@@ -169,26 +169,28 @@ CMakeFiles/TheOPGame.dir/src/screen.cpp.s: cmake_force
 
 # Object files for target TheOPGame
 TheOPGame_OBJECTS = \
+"CMakeFiles/TheOPGame.dir/src/FileManager.cpp.o" \
 "CMakeFiles/TheOPGame.dir/src/board_generator.cpp.o" \
-"CMakeFiles/TheOPGame.dir/src/collectible.cpp.o" \
 "CMakeFiles/TheOPGame.dir/src/game.cpp.o" \
 "CMakeFiles/TheOPGame.dir/src/main.cpp.o" \
 "CMakeFiles/TheOPGame.dir/src/obstacle.cpp.o" \
-"CMakeFiles/TheOPGame.dir/src/player_controller.cpp.o" \
+"CMakeFiles/TheOPGame.dir/src/player.cpp.o" \
 "CMakeFiles/TheOPGame.dir/src/screen.cpp.o"
 
 # External object files for target TheOPGame
 TheOPGame_EXTERNAL_OBJECTS =
 
+TheOPGame: CMakeFiles/TheOPGame.dir/src/FileManager.cpp.o
 TheOPGame: CMakeFiles/TheOPGame.dir/src/board_generator.cpp.o
-TheOPGame: CMakeFiles/TheOPGame.dir/src/collectible.cpp.o
 TheOPGame: CMakeFiles/TheOPGame.dir/src/game.cpp.o
 TheOPGame: CMakeFiles/TheOPGame.dir/src/main.cpp.o
 TheOPGame: CMakeFiles/TheOPGame.dir/src/obstacle.cpp.o
-TheOPGame: CMakeFiles/TheOPGame.dir/src/player_controller.cpp.o
+TheOPGame: CMakeFiles/TheOPGame.dir/src/player.cpp.o
 TheOPGame: CMakeFiles/TheOPGame.dir/src/screen.cpp.o
 TheOPGame: CMakeFiles/TheOPGame.dir/build.make
 TheOPGame: /usr/lib/x86_64-linux-gnu/libcurses.so
+TheOPGame: /usr/lib/x86_64-linux-gnu/libform.so
+TheOPGame: /usr/lib/x86_64-linux-gnu/libmenu.so
 TheOPGame: /usr/lib/x86_64-linux-gnu/libform.so
 TheOPGame: /usr/lib/x86_64-linux-gnu/libmenu.so
 TheOPGame: CMakeFiles/TheOPGame.dir/link.txt

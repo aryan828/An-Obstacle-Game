@@ -84,10 +84,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/aryan/CLionProjects/TheOPGame/src/board_generator.cpp">
+		<Unit filename="/home/aryan/CLionProjects/TheOPGame/include/FileManager.h">
 			<Option target="TheOPGame"/>
 		</Unit>
-		<Unit filename="/home/aryan/CLionProjects/TheOPGame/src/collectible.cpp">
+		<Unit filename="/home/aryan/CLionProjects/TheOPGame/include/player.h">
+			<Option target="TheOPGame"/>
+		</Unit>
+		<Unit filename="/home/aryan/CLionProjects/TheOPGame/src/FileManager.cpp">
+			<Option target="TheOPGame"/>
+		</Unit>
+		<Unit filename="/home/aryan/CLionProjects/TheOPGame/src/board_generator.cpp">
 			<Option target="TheOPGame"/>
 		</Unit>
 		<Unit filename="/home/aryan/CLionProjects/TheOPGame/src/game.cpp">
@@ -99,7 +105,7 @@
 		<Unit filename="/home/aryan/CLionProjects/TheOPGame/src/obstacle.cpp">
 			<Option target="TheOPGame"/>
 		</Unit>
-		<Unit filename="/home/aryan/CLionProjects/TheOPGame/src/player_controller.cpp">
+		<Unit filename="/home/aryan/CLionProjects/TheOPGame/src/player.cpp">
 			<Option target="TheOPGame"/>
 		</Unit>
 		<Unit filename="/home/aryan/CLionProjects/TheOPGame/src/screen.cpp">

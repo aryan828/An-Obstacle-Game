@@ -1,4 +1,4 @@
-/app/extra/clion/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS=-lncurses -G "CodeBlocks - Unix Makefiles" /home/aryan/CLionProjects/TheOPGame
+/snap/clion/152/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS=-lncurses -G "CodeBlocks - Unix Makefiles" /home/aryan/CLionProjects/TheOPGame
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/aryan/CLionProjects/TheOPGame/cmake-build-debug

@@ -11,7 +11,6 @@ class Board_Generator {
     unsigned int _length;
     unsigned int _width;
     WINDOW *_win;
-    std::mutex _mutex;
 
 public:
     Board_Generator(int &l, int &w, WINDOW *win);

@@ -1,15 +1,14 @@
 #include "../include/screen.h"
 
-void GameScreen::move_my_vehicle(std::promise<void> &&postman) {
+void GameScreen::move_my_player(std::promise<void> &&postman) {
     int playerRow = _row-2;
     int playerCol = _col/2;
     changeDisplayMatrix(playerRow, playerCol, 2);
     _board->update_cell(playerRow, playerCol, 2, -2, -2);
 
-    // notifying obstacle generation thread to create obstacle
-    if(!vehicle_created) {
+    if(!player_created) {
         std::unique_lock<std::mutex> locker(_mutex);
-        vehicle_created = true;
+        player_created = true;
         _cv.notify_all();
     }
 
@@ -81,37 +80,32 @@ void GameScreen::move_my_vehicle(std::promise<void> &&postman) {
 }
 
 void GameScreen::generate_obstacle() {
-    while(!vehicle_created) {
+    while(!player_created) {
         // wait till vehicle isn't created
         std::unique_lock<std::mutex> locker(_mutex);
         _cv.wait(locker);
     }
 
     while(game_should_go_on) {
-        int bound = getGapIndex();
-//            int row = 0;
-
+        int bound = Obstacle::getGapIndex(_row, player.score);
         Obstacle obstacle;
         obstacle.row = 0;
 
-//            std::vector<int> cols;
         for(int i=0; i<bound; i++) {
             changeDisplayMatrix(obstacle.row, i, 1);
-//                cols.push_back(i);
-            obstacle.cols.emplace_back(i);
-        }
-        for(int i=bound + getObstacleGap(); i<_col; i++) {
-            changeDisplayMatrix(obstacle.row, i, 1);
-//                cols.push_back(i);
             obstacle.cols.emplace_back(i);
         }
 
-//            _board->update_cell(row, cols, 1);
+        for(int i=bound + Obstacle::getObstacleGap(player.score); i<_col; i++) {
+            changeDisplayMatrix(obstacle.row, i, 1);
+            obstacle.cols.emplace_back(i);
+        }
+
         _board->update_cell(obstacle);
 
         //moving downward
         for(int r = 0; r < _row; r++) {
-            std::this_thread::sleep_for(std::chrono::milliseconds(getObstacleDelay())); // waiting time of updating obstacle row
+            std::this_thread::sleep_for(std::chrono::milliseconds(Obstacle::getObstacleDelay(player.score))); // waiting time of updating obstacle row
             for(int col : obstacle.cols) {
                 changeDisplayMatrix(r, col, 0); // changing current row val to 0
                 if(r < _row - 1) { // shouldn't do this if this is last row.
@@ -127,26 +121,8 @@ void GameScreen::generate_obstacle() {
             if(!game_should_go_on) break;
         }
         if(!game_should_go_on) break;
-        score++; // each obstacle goes out of the board, score increases.
+        player.score++; // each obstacle goes out of the board, score increases.
     }
-    //sender.set_value();
-}
-
-int GameScreen::getGapIndex() {
-    int mid = _col/2;
-    int index;
-
-    if(score % 2 == 0) {
-        // generate gap on left side
-        srand(time(0));
-        index = rand() % mid;
-    } else {
-        // gap on right side
-        // start from mid point to (_col - # of gap)
-        srand(mid);
-        index =  rand() % (_col - getObstacleGap()) ;
-    }
-    return index;
 }
 
 void GameScreen::changeDisplayMatrix(int b_row, int b_col, int val) {
@@ -156,24 +132,6 @@ void GameScreen::changeDisplayMatrix(int b_row, int b_col, int val) {
 
 int GameScreen::getMatrixCell(int row, int col) {
     return _inner_board[row][col];
-}
-
-void GameScreen::postGameOver() const {
-    clear();
-    wrefresh(_win);
-    attron(A_STANDOUT);
-    printw("GAME OVER!\n");
-    attroff(A_STANDOUT);
-    attron(A_UNDERLINE);
-    printw("Your score: %d\n", score);
-    attroff(A_UNDERLINE);
-    attron(A_DIM);
-    printw("Press SPACE to exit!");
-    attroff(A_DIM);
-    int inp = getch();
-    while(inp != 32) {
-        inp = getch();
-    }
 }
 
 bool GameScreen::checkPlayerCollision(int row, int col) {
@@ -195,53 +153,20 @@ void GameScreen::stopGame() {
     game_should_go_on = false;
 }
 
-int GameScreen::getObstacleDelay() {
-    if(score <= 5) {
-        obstacle_delay = 200;
-    } else if(score > 5 && score <= 10) {
-        obstacle_delay = 160;
-    } else if(score > 10 && score <= 20) {
-        obstacle_delay = 120;
-    } else if(score > 20 && score <= 30) {
-        obstacle_delay = 80;
-    } else {
-        obstacle_delay = 50;
-    }
-    return obstacle_delay;
-}
-
-int GameScreen::getObstacleGap() {
-    if(score <= 10) {
-        obstacle_max_gap = 6;
-    } else if(score > 10 && score <= 20) {
-        obstacle_max_gap = 5;
-    } else if(score > 20 && score <= 30) {
-        obstacle_max_gap = 4;
-    } else if(score > 30 && score <= 40) {
-        obstacle_max_gap = 3;
-    } else  {
-        obstacle_max_gap = 2;
-    }
-    return obstacle_max_gap;
-}
-
-GameScreen::GameScreen(int r, int c, WINDOW *win, std::unique_ptr<Board_Generator> board) {
+GameScreen::GameScreen(int r, int c, WINDOW *win, std::unique_ptr<Board_Generator> board, Player player) {
     _row = r-2;
     _col = c-2;
     _win = win;
     _board = std::move(board);
 //        box(_win, 0, 0);
     wrefresh(_win);
+    this->player = player;
 }
 
 void GameScreen::initScreen() {
     // initialize inner vector
-    std::vector<int> inner;
+    std::vector<int> inner(_col, 0);
     for (int i = 0; i < _row; i++) {
-        inner.clear();
-        for (int j = 0; j < _col; j++) {
-            inner.push_back(0);
-        }
         _inner_board.push_back(inner);
     }
 }
@@ -255,39 +180,38 @@ void GameScreen::launch_game() {
     // creating my vehicle thread
     std::promise<void> playerThreadPromise;
     std::future<void> playerThreadFuture = playerThreadPromise.get_future();
-    std::thread vehicle_thread = std::thread(&GameScreen::move_my_vehicle, this, std::move(playerThreadPromise));
+    std::thread player_thread = std::thread(&GameScreen::move_my_player, this, std::move(playerThreadPromise));
+
 
     // returns once game is over
     playerThreadFuture.wait();
-    vehicle_thread.join();
+    player_thread.join();
     obstacle_thread.wait();
 
     // display text after game is over
-    postGameOver();
+    EndScreen endScreen(player);
+    endScreen.initScreen();
 }
 
-void GameScreen::print_inner_board() {
-    for(int row=0; row<_row; row++) {
-        for(int col=0; col<_col; col++) {
-            mvwprintw(_win, row+30, col, "%d", _inner_board[row][col]);
-        }
-        printw("\n");
-    }
-    wrefresh(_win);
+void WelcomeScreen::initScreen() {
+    box(screen, 0, 0);
+    refresh();
+    wrefresh(screen);
+    printMenu();
 }
 
 void WelcomeScreen::printMenu() {
     ITEM **options;
     int choice;
     MENU *mainMenu;
-    int nChoices = messages.size();
+    int nChoices = (int)messages.size();
     ITEM *curItem;
     options = (ITEM **) calloc(nChoices+1, sizeof(ITEM *));
     for(int i = 0; i<nChoices; i++) {
         options[i] = new_item(messages[i], "");
     }
     options[nChoices] = (ITEM *)nullptr;
-    mainMenu = new_menu((ITEM **)options);
+    mainMenu = new_menu(options);
     set_menu_win(mainMenu, screen);
     set_menu_sub(mainMenu, derwin(screen, 5, 25, 14, 38));
     refresh();
@@ -299,7 +223,7 @@ void WelcomeScreen::printMenu() {
     mvwprintw(screen, 1, 38, "MAIN MENU");
     wattroff(screen, A_BOLD);
     wrefresh(screen);
-    while ((choice=getch()) != KEY_F(1)) {
+    while ((choice=getch())) {
         switch (choice) {
             case KEY_DOWN:
                 menu_driver(mainMenu, REQ_DOWN_ITEM);
@@ -310,21 +234,129 @@ void WelcomeScreen::printMenu() {
             case 10:
                 curItem = current_item(mainMenu);
                 if(curItem == options[0]) {
-                    WINDOW *gameScreen = newwin(31, 85, xPos+1, yPos+1);
-                    std::unique_ptr<Board_Generator> board(new Board_Generator(board_length, board_width, gameScreen));
-
-                    // Init Game
-                    std::unique_ptr<GameScreen> game(new GameScreen(board_length, board_width, gameScreen, std::move(board)));
-                    game->initScreen(); // init inner matrix or board
-                    game->launch_game();
-                } else if( curItem == options[1]) {
                     PlayerIPScreen playerIpScreen;
                     playerIpScreen.initScreen();
+                    clear();
+                    wrefresh(screen);
+                } else if( curItem == options[1]) {
+                    ScoreScreen scoreScreen;
+                    scoreScreen.initScreen();
+                    clear();
+                    wrefresh(screen);
                 } else { return; }
                 break;
+            default:
+                break;
         }
+        box(screen, 0, 0);
         wrefresh(screen);
     }
     for(int i = 0; i<=nChoices; i++) free_item(options[i]);
     free_menu(mainMenu);
+}
+
+PlayerIPScreen::PlayerIPScreen() {
+    xPos = 1;
+    yPos = 1;
+    screen = newwin(33, 87, yPos, xPos);
+    box(screen, 0, 0);
+    wrefresh(screen);
+    keypad(screen, TRUE);
+}
+
+void PlayerIPScreen::initScreen() {
+    mvwprintw(screen, 11, 30, "ENTER PLAYER NAME: ");
+    wrefresh(screen);
+    int count = 0;
+    int choice;
+    while ((choice = getch()) != 10) {
+        try {
+            if((choice >= 48 && choice <= 57) || (choice >= 97 && choice <= 122) || (choice >= 65 && choice <= 90)) {
+                if(count>10) throw "No more characters allowed!";
+                player.player_name[count] = (char) choice;
+                wprintw(screen, "%c", choice);
+                wrefresh(screen);
+                count++;
+            } else if(choice == KEY_BACKSPACE) {
+                if (count > 0) {
+                    mvwprintw(screen, 11, 48 + count, " ");
+                    wmove(screen, 11, 48 + count);
+                    wrefresh(screen);
+                    player.player_name[count] = ' ';
+                    count--;
+                }
+            } else throw "Character not allowed!";
+        } catch (const char* error) {
+            mvwprintw(screen, 13, 30, "%s", error);
+            wmove(screen, 11, 49 + count);
+            wrefresh(screen);
+        }
+    }
+    WINDOW *gameScreen = newwin(31, 85, xPos+1, yPos+1);
+    refresh();
+//                    box(gameScreen, 0, 0);
+    wrefresh(gameScreen);
+    std::unique_ptr<Board_Generator> board(new Board_Generator(board_length, board_width, gameScreen));
+
+    // Init Game
+    std::unique_ptr<GameScreen> game(new GameScreen(board_length, board_width, gameScreen, std::move(board), player));
+    game->initScreen(); // init inner matrix or board
+    game->launch_game();
+}
+
+EndScreen::EndScreen(Player player) {
+    xPos = 1;
+    yPos = 1;
+    screen = newwin(33, 87, yPos, xPos);
+    this->player = player;
+    box(screen, 0, 0);
+    wrefresh(screen);
+}
+
+void EndScreen::initScreen() {
+//    clear();
+    refresh();
+    wrefresh(screen);
+    wattron(screen, A_STANDOUT);
+    mvwprintw(screen, 14, 38, "GAME OVER!");
+    wattroff(screen, A_STANDOUT);
+    wattron(screen, A_UNDERLINE);
+    mvwprintw(screen, 16, 38, "%s", player.player_name);
+    mvwprintw(screen, 17, 36, "Your score: %d", player.score);
+    wattroff(screen, A_UNDERLINE);
+    wattron(screen, A_DIM);
+    mvwprintw(screen, 19, 32, "Press SPACE to exit!");
+    wattroff(screen, A_DIM);
+    wrefresh(screen);
+    int inp = getch();
+    while(inp != 32) {
+        inp = getch();
+    }
+    clear();
+    FileManager::writeScore(player);
+}
+
+ScoreScreen::ScoreScreen() {
+    xPos = 1;
+    yPos = 1;
+    screen = newwin(33, 87, yPos, xPos);
+    box(screen, 0, 0);
+    wrefresh(screen);
+}
+
+void ScoreScreen::initScreen() {
+    mvwaddch(screen, 2, 0, ACS_LTEE);
+    mvwhline(screen, 2, 1, ACS_HLINE, 85);
+    mvwaddch(screen, 2, 86, ACS_RTEE);
+    wattron(screen, A_BOLD);
+    mvwprintw(screen, 1, 38, "LAST SCORES");
+    mvwprintw(screen, 3, 35, "NAME");
+    mvwprintw(screen, 3, 46, "SCORE");
+    wattroff(screen, A_BOLD);
+    wrefresh(screen);
+    FileManager::readScores(screen);
+    mvwprintw(screen, 25, 30, "Press any key to go back!");
+    wrefresh(screen);
+    getch();
+    refresh();
 }
