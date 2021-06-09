@@ -15,6 +15,7 @@
 #include "board_generator.h"
 #include "player.h"
 #include "FileManager.h"
+#include "my_exceptions.h"
 
 class Screen {
 public:

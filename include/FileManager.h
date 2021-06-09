@@ -10,6 +10,7 @@
 #include <iostream>
 #include "player.h"
 #include "curses.h"
+#include "my_exceptions.h"
 
 class FileManager{
 public:

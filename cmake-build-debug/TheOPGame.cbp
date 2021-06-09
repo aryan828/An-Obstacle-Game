@@ -87,6 +87,9 @@
 		<Unit filename="/home/aryan/CLionProjects/TheOPGame/include/FileManager.h">
 			<Option target="TheOPGame"/>
 		</Unit>
+		<Unit filename="/home/aryan/CLionProjects/TheOPGame/include/my_exceptions.h">
+			<Option target="TheOPGame"/>
+		</Unit>
 		<Unit filename="/home/aryan/CLionProjects/TheOPGame/include/player.h">
 			<Option target="TheOPGame"/>
 		</Unit>

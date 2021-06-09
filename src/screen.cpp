@@ -263,7 +263,7 @@ void PlayerIPScreen::initScreen() {
     while ((choice = getch()) != 10) {
         try {
             if((choice >= 48 && choice <= 57) || (choice >= 97 && choice <= 122) || (choice >= 65 && choice <= 90)) {
-                if(count>10) throw "No more characters allowed!";
+                if(count>=10) throw MyException("No more characters allowed!");
                 player.player_name[count] = (char) choice;
                 wprintw(screen, "%c", choice);
                 wrefresh(screen);
@@ -276,9 +276,9 @@ void PlayerIPScreen::initScreen() {
                     player.player_name[count] = ' ';
                     count--;
                 }
-            } else throw "Character not allowed!";
-        } catch (const char* error) {
-            mvwprintw(screen, 13, 30, "%s", error);
+            } else throw MyException("Character not allowed!");
+        } catch (MyException& error) {
+            mvwprintw(screen, 13, 30, "%s", error.what());
             wmove(screen, 11, 49 + count);
             wrefresh(screen);
         }
