@@ -277,33 +277,6 @@ src/obstacle.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/obstacle.cpp.s
 .PHONY : src/obstacle.cpp.s
 
-src/player.o: src/player.cpp.o
-
-.PHONY : src/player.o
-
-# target to build an object file
-src/player.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/player.cpp.o
-.PHONY : src/player.cpp.o
-
-src/player.i: src/player.cpp.i
-
-.PHONY : src/player.i
-
-# target to preprocess a source file
-src/player.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/player.cpp.i
-.PHONY : src/player.cpp.i
-
-src/player.s: src/player.cpp.s
-
-.PHONY : src/player.s
-
-# target to generate assembly for a file
-src/player.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TheOPGame.dir/build.make CMakeFiles/TheOPGame.dir/src/player.cpp.s
-.PHONY : src/player.cpp.s
-
 src/screen.o: src/screen.cpp.o
 
 .PHONY : src/screen.o
@@ -355,9 +328,6 @@ help:
 	@echo "... src/obstacle.o"
 	@echo "... src/obstacle.i"
 	@echo "... src/obstacle.s"
-	@echo "... src/player.o"
-	@echo "... src/player.i"
-	@echo "... src/player.s"
 	@echo "... src/screen.o"
 	@echo "... src/screen.i"
 	@echo "... src/screen.s"

@@ -105,9 +105,6 @@
 		<Unit filename="/home/aryan/CLionProjects/TheOPGame/src/obstacle.cpp">
 			<Option target="TheOPGame"/>
 		</Unit>
-		<Unit filename="/home/aryan/CLionProjects/TheOPGame/src/player.cpp">
-			<Option target="TheOPGame"/>
-		</Unit>
 		<Unit filename="/home/aryan/CLionProjects/TheOPGame/src/screen.cpp">
 			<Option target="TheOPGame"/>
 		</Unit>

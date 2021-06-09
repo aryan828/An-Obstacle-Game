@@ -15,7 +15,7 @@ include_directories(${CURSES_INCLUDE_DIR})
 find_library(MENU_LIBRARY menu)
 find_library(FORM_LIBRARY form)
 
-add_executable(TheOPGame ${SOURCES} src/player.cpp include/player.h src/FileManager.cpp include/FileManager.h )
+add_executable(TheOPGame ${SOURCES} include/player.h src/FileManager.cpp include/FileManager.h )
 target_link_libraries(TheOPGame ${CURSES_LIBRARIES} ${MENU_LIBRARY} ${FORM_LIBRARY})
 
 find_package(Threads REQUIRED)

@@ -9,7 +9,6 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/aryan/CLionProjects/TheOPGame/src/game.cpp" "/home/aryan/CLionProjects/TheOPGame/cmake-build-debug/CMakeFiles/TheOPGame.dir/src/game.cpp.o"
   "/home/aryan/CLionProjects/TheOPGame/src/main.cpp" "/home/aryan/CLionProjects/TheOPGame/cmake-build-debug/CMakeFiles/TheOPGame.dir/src/main.cpp.o"
   "/home/aryan/CLionProjects/TheOPGame/src/obstacle.cpp" "/home/aryan/CLionProjects/TheOPGame/cmake-build-debug/CMakeFiles/TheOPGame.dir/src/obstacle.cpp.o"
-  "/home/aryan/CLionProjects/TheOPGame/src/player.cpp" "/home/aryan/CLionProjects/TheOPGame/cmake-build-debug/CMakeFiles/TheOPGame.dir/src/player.cpp.o"
   "/home/aryan/CLionProjects/TheOPGame/src/screen.cpp" "/home/aryan/CLionProjects/TheOPGame/cmake-build-debug/CMakeFiles/TheOPGame.dir/src/screen.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

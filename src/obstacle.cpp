@@ -1,7 +1,3 @@
-//
-// Created by aryan on 04/05/21.
-//
-
 #include <ctime>
 #include "../include/obstacle.h"
 
@@ -10,12 +6,9 @@ int Obstacle::getGapIndex(int col, int score) {
     int index;
 
     if(score % 2 == 0) {
-        // generate gap on left side
         srand(time(0));
         index = rand() % mid;
     } else {
-        // gap on right side
-        // start from mid point to (_col - # of gap)
         srand(mid);
         index =  rand() % (col - Obstacle::getObstacleGap(score)) ;
     }

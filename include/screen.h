@@ -24,17 +24,16 @@ public:
 
 class GameScreen: Screen {
 private:
-    std::vector<std::vector<int>> _inner_board;
+    std::vector<std::vector<int>> display_matrix;
     int _row;
     int _col;
-    WINDOW *_win;
     std::unique_ptr<Board_Generator> _board;
-    std::mutex _mutex;
+    std::mutex m;
     std::condition_variable _cv;
     bool game_should_go_on = true;
     bool player_created = false;
     Player player;
-    void move_my_player(std::promise<void> &&postman);
+    void move_my_player();
     void generate_obstacle();
     void changeDisplayMatrix(int b_row, int b_col, int val);
     int getMatrixCell(int row, int col);
@@ -44,7 +43,7 @@ private:
 
 public:
     GameScreen(int r, int c, WINDOW *win, std::unique_ptr<Board_Generator> board, Player player);
-    ~GameScreen() { delwin(_win); }
+    ~GameScreen() { delwin(screen); }
     void initScreen();
     void launch_game();
 };

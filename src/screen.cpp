@@ -1,13 +1,13 @@
 #include "../include/screen.h"
 
-void GameScreen::move_my_player(std::promise<void> &&postman) {
+void GameScreen::move_my_player() {
     int playerRow = _row-2;
     int playerCol = _col/2;
     changeDisplayMatrix(playerRow, playerCol, 2);
     _board->update_cell(playerRow, playerCol, 2, -2, -2);
 
     if(!player_created) {
-        std::unique_lock<std::mutex> locker(_mutex);
+        std::unique_lock<std::mutex> locker(m);
         player_created = true;
         _cv.notify_all();
     }
@@ -76,13 +76,12 @@ void GameScreen::move_my_player(std::promise<void> &&postman) {
                 break;
         }
     }
-    postman.set_value();
 }
 
 void GameScreen::generate_obstacle() {
     while(!player_created) {
         // wait till vehicle isn't created
-        std::unique_lock<std::mutex> locker(_mutex);
+        std::unique_lock<std::mutex> locker(m);
         _cv.wait(locker);
     }
 
@@ -105,15 +104,15 @@ void GameScreen::generate_obstacle() {
 
         //moving downward
         for(int r = 0; r < _row; r++) {
-            std::this_thread::sleep_for(std::chrono::milliseconds(Obstacle::getObstacleDelay(player.score))); // waiting time of updating obstacle row
+            std::this_thread::sleep_for(std::chrono::milliseconds(Obstacle::getObstacleDelay(player.score)));
             for(int col : obstacle.cols) {
-                changeDisplayMatrix(r, col, 0); // changing current row val to 0
-                if(r < _row - 1) { // shouldn't do this if this is last row.
+                changeDisplayMatrix(r, col, 0);
+                if(r < _row - 1) {
                     if(checkObstacleCollision(r+1, col)) {
                         stopGame();
                         break;
                     }
-                    changeDisplayMatrix(r+1, col, 1); // Taking obstacle in below row
+                    changeDisplayMatrix(r+1, col, 1);
                 }
             }
             obstacle.row++;
@@ -121,45 +120,44 @@ void GameScreen::generate_obstacle() {
             if(!game_should_go_on) break;
         }
         if(!game_should_go_on) break;
-        player.score++; // each obstacle goes out of the board, score increases.
+        player.score++;
     }
 }
 
 void GameScreen::changeDisplayMatrix(int b_row, int b_col, int val) {
-    std::lock_guard<std::mutex> locker(_mutex);
-    _inner_board[b_row][b_col] = val;
+    std::lock_guard<std::mutex> locker(m);
+    display_matrix[b_row][b_col] = val;
 }
 
 int GameScreen::getMatrixCell(int row, int col) {
-    return _inner_board[row][col];
+    return display_matrix[row][col];
 }
 
 bool GameScreen::checkPlayerCollision(int row, int col) {
-    if(getMatrixCell(row, col) == 1) { // vehicle found obstacle in this position
+    if(getMatrixCell(row, col) == 1) { // PLAYER found OBSTACLE at this position
         return true;
     }
     return false;
 }
 
 bool GameScreen::checkObstacleCollision(int row, int col) {
-    if(getMatrixCell(row, col) == 2) { // obstacle found vehicle in this position
+    if(getMatrixCell(row, col) == 2) { // OBSTACLE found PLAYER at this position
         return true;
     }
     return false;
 }
 
 void GameScreen::stopGame() {
-    std::lock_guard<std::mutex> locker(_mutex);
+    std::lock_guard<std::mutex> locker(m);
     game_should_go_on = false;
 }
 
 GameScreen::GameScreen(int r, int c, WINDOW *win, std::unique_ptr<Board_Generator> board, Player player) {
     _row = r-2;
     _col = c-2;
-    _win = win;
+    screen = win;
     _board = std::move(board);
-//        box(_win, 0, 0);
-    wrefresh(_win);
+    wrefresh(screen);
     this->player = player;
 }
 
@@ -167,7 +165,7 @@ void GameScreen::initScreen() {
     // initialize inner vector
     std::vector<int> inner(_col, 0);
     for (int i = 0; i < _row; i++) {
-        _inner_board.push_back(inner);
+        display_matrix.push_back(inner);
     }
 }
 
@@ -177,18 +175,11 @@ void GameScreen::launch_game() {
     // generating and moving obstacle continuously
     std::future<void> obstacle_thread = std::async(std::launch::async, &GameScreen::generate_obstacle, this);
 
-    // creating my vehicle thread
-    std::promise<void> playerThreadPromise;
-    std::future<void> playerThreadFuture = playerThreadPromise.get_future();
-    std::thread player_thread = std::thread(&GameScreen::move_my_player, this, std::move(playerThreadPromise));
+    std::future<void> player_thread = std::async(std::launch::async, &GameScreen::move_my_player, this);
 
-
-    // returns once game is over
-    playerThreadFuture.wait();
-    player_thread.join();
+    player_thread.wait();
     obstacle_thread.wait();
 
-    // display text after game is over
     EndScreen endScreen(player);
     endScreen.initScreen();
 }

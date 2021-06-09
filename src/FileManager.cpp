@@ -1,7 +1,3 @@
-//
-// Created by aryan on 06/06/21.
-//
-
 #include "../include/FileManager.h"
 
 
@@ -25,6 +21,8 @@ void FileManager::readScores(WINDOW *screen) {
             mvwprintw(screen, 4+i, 35, "%s", player.player_name);
             mvwprintw(screen, 4+i, 46, "%d", player.score);
         }
+        if(i==0) throw "No scores available!";
     } catch (const char *error) {
+        mvwprintw(screen, 6, 31, "%s", error);
     }
 }
